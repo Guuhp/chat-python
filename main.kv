@@ -1,15 +1,15 @@
 JanelaGerenciador:
   Ip:
   Home:
-  Chat:
   CameraClick:
+  SeePhoto:
 
 <Ip>:
   name:"ip"
   AnchorLayout:
     TextInput:
       id:inp_ip
-      hint_text:"insira o Ip do serviço backend"
+      hint_text:"insira o numero do Ip do serviço backend"
       size_hint_y: None
       height: '48dp'
   BoxLayout:
@@ -32,19 +32,19 @@ JanelaGerenciador:
       width: 100
       allow_stretch: True
     Button:
-      text: "tirar foto"
+      text: "Enviar Foto"
       on_release:app.root.current='camera'
       size_hint_y: None
       height: '48dp'
     Button:
       id:get_photo
-      text:'pegar message'
+      text:'Ver Mensagens'
       on_release: app.get_message()
       size_hint_y: None
       height: '48dp'
     TextInput:
       id:inpt_codigo_room
-      hint_text:"numero da sala"
+      hint_text:"Numero da Sala"
       size_hint_y: None
       height: '48dp'
     Label:
@@ -54,13 +54,13 @@ JanelaGerenciador:
       height: '48dp'
     Button:
       id:btn_join_room
-      text: "entrar na sala"
+      text: "Entrar Na Sala"
       on_press:app.join_room()
       size_hint_y: None
       height: '48dp'
     Button:
       id:btn_create_room
-      text: "criar sala"
+      text: "Criar Sala"
       on_press: app.new_conversation()
       size_hint_y: None
       height: '48dp'
@@ -78,13 +78,34 @@ JanelaGerenciador:
       orientation: 'vertical'
       Camera:
       Button:
-        text: 'Capture'
+        text: 'Tirar Foto'
         size_hint_y: None
         height: '48dp'
         on_press: app.capture()
+        on_release: app.root.current='verfoto'
       Button:
         text: 'Voltar'
         size_hint_y: None
         height: '48dp'
         on_release: app.root.current='home'
+
+<SeePhoto>:
+  name:"verfoto"
+  BoxLayout:
+    orientation: 'vertical'
+    AsyncImage:
+      id:imguser 
+      source:''
+      width: 100
+      allow_stretch: True
+    Button:
+      text: 'Enviar Foto'
+      size_hint_y: None
+      height: '48dp'
+      on_release: app.root.current='home'
+    Button:
+      text: 'Tirar Outra Foto'
+      size_hint_y: None
+      height: '48dp'
+      on_release: app.root.current='camera'
 
