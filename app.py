@@ -1,13 +1,11 @@
 from flask import Flask,jsonify,request,send_file
 import random
 import os
-import json
-import shutil
 from PIL import Image
 import io
 
 app = Flask(__name__)
-PATH="/home/guuhp/Documents/programacao/project_chat-1/static/upload"
+PATH="room"
 
 @app.route("/new_conversation",methods=["GET"])
 def new_conversation():
